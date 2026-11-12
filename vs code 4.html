@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet Generator</title>
+    <link rel="stylesheet" href="vs code 5.css">
+    <script src="vs code 6.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Marksheet Generator</h1>
+        <p>Enter student details and generate your marksheet</p>
+    </header>
+
+    <main class="container">
+
+        <!-- STEP 1: STUDENT DETAILS -->
+
+        <section id="studentSection" class="card">
+
+            <h2>Student Details</h2>
+
+            <form id="studentForm">
+
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName"
+                       placeholder="Enter your name" required>
+
+                <label for="rollNo">Roll Number</label>
+                <input type="text" id="rollNo"
+                       placeholder="Enter roll number" required>
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+
+                <p id="studentError" class="error"></p>
+
+                <button type="submit">Continue to Marks</button>
+
+            </form>
+
+        </section>
+
+
+        <!-- STEP 2: MARKS ENTRY -->
+
+        <section id="marksSection" class="card hidden">
+
+            <h2>Enter Subject Marks</h2>
+
+            <div id="subjectContainer">
+
+                <div class="subject-row">
+
+                    <input type="text" class="subjectName"
+                           placeholder="Subject Name">
+
+                    <input type="number" class="obtained"
+                           placeholder="Marks Obtained" min="0">
+
+                    <input type="number" class="maximum"
+                           placeholder="Total Marks" min="1">
+
+                    <button type="button" class="remove-btn"
+                            onclick="removeSubject(this)">X</button>
+
+                </div>
+
+            </div>
+
+            <button type="button" id="addSubject">
+                + Add Subject
+            </button>
+
+            <p id="marksError" class="error"></p>
+
+            <button type="button" id="generateBtn">
+                Generate Marksheet
+            </button>
+
+        </section>
+
+
+        <!-- STEP 3: FINAL MARKSHEET -->
+
+        <section id="resultSection" class="card hidden">
+
+            <div id="marksheet">
+
+                <div class="marksheet-header">
+                    <h2>STUDENT MARKSHEET</h2>
+                    <p>Academic Performance Report</p>
+                </div>
+
+                <div class="student-info">
+
+                    <p><strong>Name:</strong>
+                        <span id="resultName"></span></p>
+
+                    <p><strong>Roll Number:</strong>
+                        <span id="resultRoll"></span></p>
+
+                    <p><strong>Date of Birth:</strong>
+                        <span id="resultDob"></span></p>
+
+                </div>
+
+                <h3>Subject-wise Performance</h3>
+
+                <div class="table-container">
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Maximum Marks</th>
+                                <th>Obtained Marks</th>
+                                <th>Percentage</th>
+                                <th>Grade</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="resultTable">
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="summary">
+
+                    <p>Total Maximum Marks:
+                        <strong id="totalMaximum"></strong></p>
+
+                    <p>Total Obtained Marks:
+                        <strong id="totalObtained"></strong></p>
+
+                    <p>Overall Percentage:
+                        <strong id="percentage"></strong></p>
+
+                    <p>Overall Grade:
+                        <strong id="overallGrade"></strong></p>
+
+                    <p>Final Result:
+                        <strong id="finalResult"></strong></p>
+
+                </div>
+
+                <div class="signature">
+                    <p>_____________________</p>
+                    <p>Authorized Signature</p>
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <button type="button" onclick="window.print()">
+                    Print Marksheet
+                </button>
+
+                <button type="button" id="editBtn">
+                    Edit Marks
+                </button>
+
+                <button type="button" id="restartBtn">
+                    Start Again
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Student Marksheet Generator | Created using HTML, CSS & JavaScript</p>
+    </footer>
+
+</body>
+</html>
